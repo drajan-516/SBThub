@@ -1,0 +1,11 @@
+D:\Programming\SBThub\SBThub\SBThub.Domain\obj\Debug\net10.0\SBThub.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\SBThub\SBThub\SBThub.Domain\obj\Debug\net10.0\SBThub.Domain.AssemblyInfoInputs.cache
+D:\Programming\SBThub\SBThub\SBThub.Domain\obj\Debug\net10.0\SBThub.Domain.AssemblyInfo.cs
+D:\Programming\SBThub\SBThub\SBThub.Domain\obj\Debug\net10.0\SBThub.Domain.csproj.CoreCompileInputs.cache
+D:\Programming\SBThub\SBThub\SBThub.Domain\bin\Debug\net10.0\SBThub.Domain.deps.json
+D:\Programming\SBThub\SBThub\SBThub.Domain\bin\Debug\net10.0\SBThub.Domain.dll
+D:\Programming\SBThub\SBThub\SBThub.Domain\bin\Debug\net10.0\SBThub.Domain.pdb
+D:\Programming\SBThub\SBThub\SBThub.Domain\obj\Debug\net10.0\SBThub.Domain.dll
+D:\Programming\SBThub\SBThub\SBThub.Domain\obj\Debug\net10.0\refint\SBThub.Domain.dll
+D:\Programming\SBThub\SBThub\SBThub.Domain\obj\Debug\net10.0\SBThub.Domain.pdb
+D:\Programming\SBThub\SBThub\SBThub.Domain\obj\Debug\net10.0\ref\SBThub.Domain.dll
