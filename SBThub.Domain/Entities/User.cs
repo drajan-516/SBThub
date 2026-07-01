@@ -18,7 +18,7 @@ public sealed class User : Entity
 
     public string? Phone { get; private set; }
     
-    public static ResultResponse Create(string? fullName, string? phone)
+    public static ResultResponse<User> Create(string? fullName, string? phone)
     {
         var nameResult = UserName.Create(fullName);
         if (nameResult.IsFailure)
