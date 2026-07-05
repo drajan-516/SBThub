@@ -1242,11 +1242,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programming\\SBThub\\SBThub\\SBThub.Infrastructure\\SBThub.Infrastructure.csproj",
+      "projectUniqueName": "D:\\Programming\\SBThub\\SBThub.Infrastructure\\SBThub.Infrastructure.csproj",
       "projectName": "SBThub.Infrastructure",
-      "projectPath": "D:\\Programming\\SBThub\\SBThub\\SBThub.Infrastructure\\SBThub.Infrastructure.csproj",
+      "projectPath": "D:\\Programming\\SBThub\\SBThub.Infrastructure\\SBThub.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "D:\\Programming\\SBThub\\SBThub\\SBThub.Infrastructure\\obj\\",
+      "outputPath": "D:\\Programming\\SBThub\\SBThub.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1261,8 +1261,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\Programming\\SBThub\\SBThub\\SBThub.Application\\SBThub.Application.csproj": {
-              "projectPath": "D:\\Programming\\SBThub\\SBThub\\SBThub.Application\\SBThub.Application.csproj"
+            "D:\\Programming\\SBThub\\SBThub.Application\\SBThub.Application.csproj": {
+              "projectPath": "D:\\Programming\\SBThub\\SBThub.Application\\SBThub.Application.csproj"
             }
           }
         }

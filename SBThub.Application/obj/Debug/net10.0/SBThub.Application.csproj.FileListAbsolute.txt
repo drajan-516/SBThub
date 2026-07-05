@@ -21,3 +21,9 @@ D:\Programming\SBThub\SBThub\SBThub.Application\obj\Debug\net10.0\SBThub.Applica
 D:\Programming\SBThub\SBThub\SBThub.Application\obj\Debug\net10.0\ref\SBThub.Application.dll
 D:\Programming\SBThub\SBThub\SBThub.Application\bin\Debug\net10.0\SBThub.Domain.dll
 D:\Programming\SBThub\SBThub\SBThub.Application\bin\Debug\net10.0\SBThub.Domain.pdb
+D:\Programming\SBThub\SBThub.Application\obj\Debug\net10.0\SBThub.Application.csproj.AssemblyReference.cache
+D:\Programming\SBThub\SBThub.Application\obj\Debug\net10.0\SBThub.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\SBThub\SBThub.Application\obj\Debug\net10.0\SBThub.Application.AssemblyInfoInputs.cache
+D:\Programming\SBThub\SBThub.Application\obj\Debug\net10.0\SBThub.Application.AssemblyInfo.cs
+D:\Programming\SBThub\SBThub.Application\obj\Debug\net10.0\SBThub.Application.csproj.CoreCompileInputs.cache
+D:\Programming\SBThub\SBThub.Application\obj\Debug\net10.0\SBThub.Application.sourcelink.json

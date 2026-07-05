@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\SBThub\\SBThub\\SBThub.Domain\\SBThub.Domain.csproj": {}
+    "D:\\Programming\\SBThub\\SBThub.Domain\\SBThub.Domain.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\SBThub\\SBThub\\SBThub.Domain\\SBThub.Domain.csproj": {
+    "D:\\Programming\\SBThub\\SBThub.Domain\\SBThub.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\SBThub\\SBThub\\SBThub.Domain\\SBThub.Domain.csproj",
+        "projectUniqueName": "D:\\Programming\\SBThub\\SBThub.Domain\\SBThub.Domain.csproj",
         "projectName": "SBThub.Domain",
-        "projectPath": "D:\\Programming\\SBThub\\SBThub\\SBThub.Domain\\SBThub.Domain.csproj",
+        "projectPath": "D:\\Programming\\SBThub\\SBThub.Domain\\SBThub.Domain.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\SBThub\\SBThub\\SBThub.Domain\\obj\\",
+        "outputPath": "D:\\Programming\\SBThub\\SBThub.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
