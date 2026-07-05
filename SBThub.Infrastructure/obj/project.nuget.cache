@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5Wz4+L4vv64=",
+  "dgSpecHash": "ibuShl/Tx18=",
   "success": true,
-  "projectFilePath": "D:\\Programming\\SBThub\\SBThub\\SBThub.Infrastructure\\SBThub.Infrastructure.csproj",
+  "projectFilePath": "D:\\Programming\\SBThub\\SBThub.Infrastructure\\SBThub.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.11.0\\fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",

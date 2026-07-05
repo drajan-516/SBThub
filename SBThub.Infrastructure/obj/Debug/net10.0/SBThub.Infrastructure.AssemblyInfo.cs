@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SBThub.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4e47b6a9943337067cc110d1531458967e3ddbf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a91d6b3700a9ee64ad000758d6636f67f5afc2a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("SBThub.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SBThub.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
