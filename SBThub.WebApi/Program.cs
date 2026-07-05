@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
+using SBThub.Application;
+using SBThub.Infrastructure;
 using SBThub.Infrastructure.Persistence;
 using SBThub.WebApi.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<ShopDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") 
-                      ?? "Data Source=local_database.db"));
-
+builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=local_database.db");
+builder.Services.AddApplication();
 builder.Services.AddControllers();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -57,6 +57,7 @@ app.UseHttpsRedirection();
 app.UseAntiforgery();
 
 app.MapStaticAssets();
+app.MapControllers();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
