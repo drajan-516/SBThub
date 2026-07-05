@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-﻿**/bin/
+**/bin/
 **/obj/
 *.db
 *.db-shm
 *.db-wal
-=======
-﻿bin/
-obj/
+.vs/
 .idea/
-*.user
->>>>>>> origin/main
