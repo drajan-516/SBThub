@@ -1,4 +1,5 @@
-﻿bin/
-obj/
-.idea/
-*.user
+﻿**/bin/
+**/obj/
+*.db
+*.db-shm
+*.db-wal
