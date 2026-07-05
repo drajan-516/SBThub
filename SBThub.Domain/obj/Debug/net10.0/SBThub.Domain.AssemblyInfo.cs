@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SBThub.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a91d6b3700a9ee64ad000758d6636f67f5afc2a3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+086b1ea7e4cd128a83d45dda0b8c8b35a2d9fa9a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SBThub.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SBThub.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

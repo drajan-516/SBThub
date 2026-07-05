@@ -7,6 +7,7 @@ public static class ShopDbSeeder
 {
     public static async Task SeedAsync(ShopDbContext context, CancellationToken cancellationToken = default)
     {
+        
         if (await context.Users.AnyAsync(cancellationToken))
             return;
 
