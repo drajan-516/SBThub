@@ -8,6 +8,8 @@ internal sealed class UserRepository(ShopDbContext context) : IUserRepository
 {
     public void Add(User user) => context.Users.Add(user);
 
+    public void Remove(User user) => context.Users.Remove(user);
+
     public async Task<User?> GetByUuidAsync(Guid uuid, CancellationToken cancellationToken) =>
         await context.Users.FirstOrDefaultAsync(user => user.Uuid == uuid, cancellationToken);
 
