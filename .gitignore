@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 ﻿**/bin/
 **/obj/
 *.db
 *.db-shm
 *.db-wal
+=======
+﻿bin/
+obj/
+.idea/
+*.user
+>>>>>>> origin/main
