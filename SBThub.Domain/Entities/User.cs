@@ -26,4 +26,14 @@ public sealed class User : Entity
 
         return ResultResponse.Success(new User(Guid.NewGuid(), nameResult.Value, phone));
     }
+
+    public ResultResponse Update(string? fullName, string? phone)
+    {
+        var nameResult = UserName.Create(fullName);
+        if (nameResult.IsFailure) return ResultResponse.Failure(nameResult.Error);
+        FullName = nameResult.Value;
+        Phone = phone;
+        
+        return  ResultResponse.Success();
+    }
 }
