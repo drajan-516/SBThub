@@ -1,3 +1,3 @@
-namespace SBThub.Application.Contracts.Requests;
+namespace SBThub.Application.Contracts.Requests.User;
 
 public sealed record UpdateUserRequest(string? FullName, string? Phone);
