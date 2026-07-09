@@ -1,7 +1,7 @@
 ﻿using SBThub.Domain.Errors;
 using SBThub.Domain.Shared;
 
-namespace SBThub.Domain.ValueObjects;
+namespace SBThub.Domain.ValueObjects.Product;
 public sealed record ProductTitle
 {
     public const int MaxLength = 400;
