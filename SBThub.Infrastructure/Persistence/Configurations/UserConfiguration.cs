@@ -2,6 +2,7 @@ using SBThub.Domain.Entities;
 using SBThub.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SBThub.Domain.ValueObjects.User;
 
 namespace SBThub.Infrastructure.Persistence.Configurations;
 

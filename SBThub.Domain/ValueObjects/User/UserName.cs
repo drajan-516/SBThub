@@ -1,7 +1,7 @@
 using SBThub.Domain.Errors;
 using SBThub.Domain.Shared;
 
-namespace SBThub.Domain.ValueObjects;
+namespace SBThub.Domain.ValueObjects.User;
 public sealed record UserName
 {
     public const int MaxLength = 100;

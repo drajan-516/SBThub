@@ -1,5 +1,6 @@
 using FluentValidation;
 using SBThub.Domain.ValueObjects;
+using SBThub.Domain.ValueObjects.User;
 
 namespace SBThub.Application.UseCases.Users.CreateUser;
 
