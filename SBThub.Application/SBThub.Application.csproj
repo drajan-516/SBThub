@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="UseCases\Products\ShowProductsCreatedByUser\" />
       <Folder Include="UseCases\Users\DeleteUser\" />
     </ItemGroup>
 

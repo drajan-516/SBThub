@@ -5,6 +5,7 @@ using SBThub.Application.UseCases.Users.UpdateUser;
 using SBThub.Application.UseCases.Users.DeleteUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SBThub.Application.Contracts.Requests.User;
 
 namespace SBThub.WebApi.Controllers;
 
