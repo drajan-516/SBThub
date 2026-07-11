@@ -12,7 +12,7 @@ public static class ShopDbSeeder
         if (await context.Users.AnyAsync(cancellationToken))
             return;
 
-        var user = User.Create("Домбровская Аня", "+380 555 35 35").Value;
+        var user = User.Create("Домбровская Аня", "+3805553535").Value;
         context.Users.Add(user);
         await context.SaveChangesAsync(cancellationToken);
         
