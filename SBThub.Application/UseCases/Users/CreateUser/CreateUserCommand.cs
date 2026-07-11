@@ -1,5 +1,4 @@
 using SBThub.Application.Abstractions.Messaging;
-using SBThub.Application.Contracts.Requests;
 using SBThub.Application.Contracts.Requests.User;
 using SBThub.Application.Contracts.Responses;
 
