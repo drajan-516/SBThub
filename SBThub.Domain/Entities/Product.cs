@@ -12,7 +12,6 @@ public sealed class Product : Entity
     public string Description { get; private set; }
     public decimal Price { get; private set; }
     public DateTime CreatedOn { get; private set; }
-    
     public Guid CreatedByUserId { get; private set; }
     
     private Product(Guid uuid, string fullTitle, string description, decimal price, DateTime createdOn, Guid createdByUserId) : base(uuid)
