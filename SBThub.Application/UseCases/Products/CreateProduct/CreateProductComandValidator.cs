@@ -12,3 +12,6 @@ internal sealed class CreateProductCommandValidator : AbstractValidator<CreatePr
             .MaximumLength(ProductTitle.MaxLength);
     }
 }
+
+
+//проверка наличия юзера в БД 
