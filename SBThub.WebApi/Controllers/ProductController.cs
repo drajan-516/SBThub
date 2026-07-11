@@ -1,7 +1,7 @@
 ﻿
 using SBThub.Application.UseCases.Products.CreateProduct;
 using SBThub.Application.UseCases.Products.GetProductCreator;
-// using SBThub.Application.UseCases.Products.UpdateUser;
+using SBThub.Application.UseCases.Products.ShowProductsCreatedByUser;
 using SBThub.Application.UseCases.Products.DeleteProduct;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +24,13 @@ public sealed class ProductsController(ISender sender) : BaseApiController(sende
     public async Task<IActionResult> GetProductCreator(Guid uuid, CancellationToken cancellationToken)
     {
         var result = await Sender.Send(new GetProductCreatorQuery(uuid), cancellationToken);
+        return result.IsFailure ? HandleFailure(result) : Ok(result.Value);
+    }
+    
+    [HttpGet("{uuid:guid}/products")]
+    public async Task<IActionResult> ShowProductsCreatedByUser(Guid uuid, CancellationToken cancellationToken)
+    {
+        var result = await Sender.Send(new ShowProductsCreatedByUserQuery(uuid), cancellationToken);
         return result.IsFailure ? HandleFailure(result) : Ok(result.Value);
     }
     
