@@ -12,11 +12,7 @@ internal sealed class GetProductCreatorHandler(IProductRepository products, IUse
 {
     public async Task<ResultResponse<UserResponse>> Handle(GetProductCreatorQuery query, CancellationToken cancellationToken)
     {
-        var product = await products.GetByUuidAsync(query.ProductUuid, cancellationToken);
-        if (product is null)
-            return ResultResponse.Failure<UserResponse>(ProductErrors.NotFound);
-
-        var user = await users.GetByUuidAsync(product.CreatedByUserId, cancellationToken);
+        var user = await users.GetByUuidAsync(query.UserUuid, cancellationToken);
         if (user is null)
             return ResultResponse.Failure<UserResponse>(UserErrors.NotFound);
 

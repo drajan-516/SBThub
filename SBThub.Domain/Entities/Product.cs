@@ -1,4 +1,5 @@
-﻿using SBThub.Domain.Common;
+﻿using SBThub.Application.Contracts.Contracts.Requests.Product;
+using SBThub.Domain.Common;
 using SBThub.Domain.Shared;
 using SBThub.Domain.ValueObjects.Product;
 
@@ -24,13 +25,22 @@ public sealed class Product : Entity
     }
     
     
-    public static ResultResponse<Product> Create(string? fullTitle, string description, decimal price, DateTime createdOn, Guid createdByUserId)
+    public static ResultResponse<Product> Create(CreateProductRequest createProductRequest)
     {
-        var titleResult = ProductTitle.Create(fullTitle);
+        var titleResult = ProductTitle.Create(createProductRequest.FullTitle);
+        
         if (titleResult.IsFailure)
             return ResultResponse.Failure<Product>(titleResult.Error);
+        
+        var newProduct = new Product
+        {
+            FullTitle = titleResult.Value.Value,
+            Description = createProductRequest.Description,
+            Price = createProductRequest.Price,
+            CreatedByUserId = createProductRequest.CreatedByUserId
+        };
 
-        return ResultResponse.Success(new Product(Guid.NewGuid(), titleResult.Value.Value, description, price, createdOn, createdByUserId));
+        return ResultResponse.Success(newProduct);
     }
     
     

@@ -4,7 +4,7 @@ using SBThub.Domain.Shared;
 namespace SBThub.Domain.ValueObjects.Product;
 public sealed record ProductTitle
 {
-    public const int MaxLength = 400;
+    public const int MaxLength = 75;
 
     private ProductTitle(string value) => Value = value;
 

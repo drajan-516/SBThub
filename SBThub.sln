@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBThub.Infrastructure", "SB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBThub.WebApi", "SBThub.WebApi\SBThub.WebApi.csproj", "{152D33B4-EC8A-4BA8-97EF-03D8F4ABFC3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBThub.Application.Contracts", "SBThub.Application.Contracts\SBThub.Application.Contracts.csproj", "{4003BEDF-65FB-4B7F-8814-C75C5EA6D632}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{152D33B4-EC8A-4BA8-97EF-03D8F4ABFC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{152D33B4-EC8A-4BA8-97EF-03D8F4ABFC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{152D33B4-EC8A-4BA8-97EF-03D8F4ABFC3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4003BEDF-65FB-4B7F-8814-C75C5EA6D632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4003BEDF-65FB-4B7F-8814-C75C5EA6D632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4003BEDF-65FB-4B7F-8814-C75C5EA6D632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4003BEDF-65FB-4B7F-8814-C75C5EA6D632}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

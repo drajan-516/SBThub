@@ -8,5 +8,7 @@ public abstract class Entity
 
     public int Id { get; protected set; }
 
-    public Guid Uuid { get; protected set; }
+    public Guid Uuid { get; protected set; } = Guid.NewGuid();
+    
+    public DateTimeOffset CreatedOn { get; protected set; } = DateTimeOffset.UtcNow;
 }
