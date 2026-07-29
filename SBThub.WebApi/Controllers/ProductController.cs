@@ -21,6 +21,7 @@ public sealed class ProductsController(ISender sender) : BaseApiController(sende
     
     // TODO : replace create date from entity
     // and remove from request
+    //ррар
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
