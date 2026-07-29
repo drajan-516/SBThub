@@ -10,6 +10,7 @@ namespace SBThub.Infrastructure.Persistence.Repositories;
 
 internal sealed class BaseRepository(ShopDbContext context) : IRepository
 {
+    private IRepository _repositoryImplementation;
     private ShopDbContext Context => context;
 
     public async Task<TEntity?> GetByUuidAsync<TEntity>(
@@ -79,5 +80,10 @@ internal sealed class BaseRepository(ShopDbContext context) : IRepository
             .IgnoreQueryFilters()
             .AsNoTracking()
             .AnyAsync(predicate, ct);
+    }
+
+    public Task<IReadOnlyList<TEntity>> GetAllAsync<TEntity>(CancellationToken ct) where TEntity : class
+    {
+        return _repositoryImplementation.GetAllAsync<TEntity>(ct);
     }
 }

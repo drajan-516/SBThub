@@ -34,4 +34,7 @@ public interface IRepository
         Expression<Func<TEntity, bool>> predicate,
         CancellationToken ct = default)
         where TEntity : class;
+    
+    Task<IReadOnlyList<TEntity>> GetAllAsync<TEntity>(CancellationToken ct) 
+        where TEntity : class;
 }

@@ -7,19 +7,24 @@ using SBThub.Domain.Shared;
 
 namespace SBThub.Application.UseCases.Products.CreateProduct;
 
-internal sealed class CreateProductHandler(IProductRepository products, IUnitOfWork unitOfWork)
-    : ICommandHandler<CreateProductCommand>
+internal sealed class CreateProductHandler(IRepository repository, IUnitOfWork unitOfWork)
+    : ICommandHandler<CreateProductCommand, ProductResponse>
 {
-    public async Task<ResultResponse> Handle(CreateProductCommand command, CancellationToken cancellationToken)
+    public async Task<ResultResponse<ProductResponse>> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
-        var productResult = Product.Create(command.Request);
+        var productResult = Product.Create(
+            command.Request.FullTitle,
+            command.Request.Description,
+            command.Request.Price,
+            command.Request.CreatedOn,
+            command.Request.CreatedByUserId);
 
         if (productResult.IsFailure)
             return ResultResponse.Failure<ProductResponse>(productResult.Error);
 
-        products.Add(productResult.Value);
+        await repository.Add(productResult.Value, cancellationToken);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return ResultResponse.Success();
+        return ResultResponse.Success(productResult.Value.ToResponse());
     }
 }

@@ -1,8 +1,6 @@
-﻿using SBThub.Application.Contracts.Contracts.Requests.Product;
-using SBThub.Domain.Common;
+﻿using SBThub.Domain.Common;
 using SBThub.Domain.Shared;
 using SBThub.Domain.ValueObjects.Product;
-
 
 namespace SBThub.Domain.Entities;
 
@@ -14,7 +12,7 @@ public sealed class Product : Entity
     public decimal Price { get; private set; }
     public DateTime CreatedOn { get; private set; }
     public Guid CreatedByUserId { get; private set; }
-    
+
     private Product(Guid uuid, string fullTitle, string description, decimal price, DateTime createdOn, Guid createdByUserId) : base(uuid)
     {
         FullTitle = fullTitle;
@@ -23,27 +21,16 @@ public sealed class Product : Entity
         CreatedOn = createdOn;
         CreatedByUserId = createdByUserId;
     }
-    
-    
-    public static ResultResponse<Product> Create(CreateProductRequest createProductRequest)
+
+    public static ResultResponse<Product> Create(string? fullTitle, string description, decimal price, DateTime createdOn, Guid createdByUserId)
     {
-        var titleResult = ProductTitle.Create(createProductRequest.FullTitle);
-        
+        var titleResult = ProductTitle.Create(fullTitle);
         if (titleResult.IsFailure)
             return ResultResponse.Failure<Product>(titleResult.Error);
-        
-        var newProduct = new Product
-        {
-            FullTitle = titleResult.Value.Value,
-            Description = createProductRequest.Description,
-            Price = createProductRequest.Price,
-            CreatedByUserId = createProductRequest.CreatedByUserId
-        };
 
-        return ResultResponse.Success(newProduct);
+        return ResultResponse.Success(new Product(Guid.NewGuid(), titleResult.Value.Value, description, price, createdOn, createdByUserId));
     }
-    
-    
+
     public ResultResponse Update(string? fullTitle, string? description)
     {
         var titleResult = ProductTitle.Create(fullTitle);

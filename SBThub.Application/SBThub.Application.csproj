@@ -17,8 +17,4 @@
       <ProjectReference Include="..\SBThub.Domain\SBThub.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="UseCases\Users\DeleteUser\" />
-    </ItemGroup>
-
 </Project>
