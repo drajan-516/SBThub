@@ -82,8 +82,10 @@ internal sealed class BaseRepository(ShopDbContext context) : IRepository
             .AnyAsync(predicate, ct);
     }
 
-    public Task<IReadOnlyList<TEntity>> GetAllAsync<TEntity>(CancellationToken ct) where TEntity : class
+    public async Task<IReadOnlyList<TEntity>> GetAllAsync<TEntity>(CancellationToken ct) where TEntity : class
     {
-        return _repositoryImplementation.GetAllAsync<TEntity>(ct);
+        return await Context.Set<TEntity>()
+            .AsNoTracking()
+            .ToListAsync(ct);
     }
 }

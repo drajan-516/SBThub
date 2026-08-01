@@ -36,7 +36,7 @@ namespace SBThub.Infrastructure.Migrations
 
                     b.Property<string>("FullTitle")
                         .IsRequired()
-                        .HasMaxLength(400)
+                        .HasMaxLength(75)
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
@@ -58,6 +58,9 @@ namespace SBThub.Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset>("CreatedOn")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("FullName")
                         .IsRequired()
