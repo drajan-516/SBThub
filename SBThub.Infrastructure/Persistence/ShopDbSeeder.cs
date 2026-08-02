@@ -20,7 +20,7 @@ public static class ShopDbSeeder
         if (await context.Products.AnyAsync(cancellationToken))
             return;
 
-        var product = Product.Create("Asus Tuf Gaming", "Asus Tuf Gaming", 6738, DateTime.Now, user.Uuid).Value; 
+        var product = Product.Create("Asus Tuf Gaming", "Asus Tuf Gaming", 6738, user.Uuid).Value; 
         context.Products.Add(product);
         await context.SaveChangesAsync(cancellationToken);
     }

@@ -10,25 +10,23 @@ public sealed class Product : Entity
     public string FullTitle { get; private set; }
     public string Description { get; private set; }
     public decimal Price { get; private set; }
-    public DateTime CreatedOn { get; private set; }
-    public Guid CreatedByUserId { get; private set; }
+    public Guid UserUuid { get; private set; }
 
-    private Product(Guid uuid, string fullTitle, string description, decimal price, DateTime createdOn, Guid createdByUserId) : base(uuid)
+    private Product(Guid uuid, string fullTitle, string description, decimal price, Guid userUuid) : base(uuid)
     {
         FullTitle = fullTitle;
         Description = description;
         Price = price;
-        CreatedOn = createdOn;
-        CreatedByUserId = createdByUserId;
+        UserUuid = userUuid;
     }
 
-    public static ResultResponse<Product> Create(string? fullTitle, string description, decimal price, DateTime createdOn, Guid createdByUserId)
+    public static ResultResponse<Product> Create(string? fullTitle, string description, decimal price, Guid userUuid)
     {
         var titleResult = ProductTitle.Create(fullTitle);
         if (titleResult.IsFailure)
             return ResultResponse.Failure<Product>(titleResult.Error);
 
-        return ResultResponse.Success(new Product(Guid.NewGuid(), titleResult.Value.Value, description, price, createdOn, createdByUserId));
+        return ResultResponse.Success(new Product(Guid.NewGuid(), titleResult.Value.Value, description, price, userUuid));
     }
 
     public ResultResponse Update(string? fullTitle, string? description)

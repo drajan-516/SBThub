@@ -16,8 +16,7 @@ internal sealed class CreateProductHandler(IRepository repository, IUnitOfWork u
             command.Request.FullTitle,
             command.Request.Description,
             command.Request.Price,
-            command.Request.CreatedOn,
-            command.Request.CreatedByUserId);
+            command.Request.UserUuid);
 
         if (productResult.IsFailure)
             return ResultResponse.Failure<ProductResponse>(productResult.Error);

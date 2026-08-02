@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SBThub.Infrastructure.Persistence;
 
@@ -10,9 +11,11 @@ using SBThub.Infrastructure.Persistence;
 namespace SBThub.Infrastructure.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    partial class ShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260802124747_RenameCreatedByUserIdToCreatedByUserUuid")]
+    partial class RenameCreatedByUserIdToCreatedByUserUuid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.9");
