@@ -2,6 +2,7 @@
 using SBThub.Application.Contracts.Responses;
 using SBThub.Application.Mapping;
 using SBThub.Domain.Entities;
+using SBThub.Domain.Errors;
 using SBThub.Domain.Repositories;
 using SBThub.Domain.Shared;
 
@@ -13,9 +14,9 @@ internal sealed class GetUserProfileByUuidHandler(IRepository repository)
     public async Task<ResultResponse<UserProfileResponse>> Handle(GetUserProfileByUserIdQuery query, CancellationToken cancellationToken)
     {
         var profile = await repository.GetSingleAsync<UserProfile>(p => p.UserId == query.UserId, cancellationToken);
-        if (profile is null)
-            return ResultResponse.Failure<UserProfileResponse>(Error.NotFound("UserProfile.NotFound", "Профиль пользователя не найден"));
 
-        return ResultResponse.Success(profile.ToResponse());
+        return profile is null
+                ? ResultResponse.Failure<UserProfileResponse>(UserProfileErrors.NotFound)
+                :  ResultResponse.Success(profile.ToResponse());
     }
 }

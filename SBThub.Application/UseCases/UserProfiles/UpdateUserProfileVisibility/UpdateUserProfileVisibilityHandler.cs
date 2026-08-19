@@ -15,7 +15,9 @@ internal sealed class UpdateUserProfileVisibilityHandler(IRepository users, IUni
     {
         var profile = await users.GetSingleAsync<UserProfile>(p => p.UserId == command.UserId, cancellationToken);
         if (profile is null)
-            return ResultResponse.Failure<UserProfileResponse>(Error.NotFound("UserProfile.NotFound", "Профиль не найден"));
+            return ResultResponse.Failure<UserProfileResponse>
+                
+                (Error.NotFound("UserProfile.NotFound", "Профиль не найден"));
        
         var updateResult = profile.UpdateVisibility(command.Request.IsFullNameVisible, command.Request.IsPhoneVisible, command.Request.IsEmailVisible, command.Request.IsAvatarVisible);
         if (updateResult.IsFailure)
@@ -27,3 +29,5 @@ internal sealed class UpdateUserProfileVisibilityHandler(IRepository users, IUni
         return ResultResponse.Success(profile.ToResponse());
     }
 }
+
+// 20 stroke - Erorrs

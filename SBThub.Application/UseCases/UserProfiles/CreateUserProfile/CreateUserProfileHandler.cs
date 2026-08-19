@@ -1,13 +1,11 @@
 ﻿using SBThub.Application.Abstractions.Messaging;
 using SBThub.Application.Contracts.Responses;
 using SBThub.Application.Mapping;
-using SBThub.Application.UseCases.UserProfiles.CreateUserProfile;
 using SBThub.Domain.Entities;
 using SBThub.Domain.Repositories;
 using SBThub.Domain.Shared;
 
 namespace SBThub.Application.UseCases.UserProfiles.CreateUserProfile;
-
 
 internal sealed class CreateUserProfileHandler(IRepository users, IUnitOfWork unitOfWork)
     : ICommandHandler<CreateUserProfileCommand, UserProfileResponse>

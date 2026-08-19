@@ -1,5 +1,4 @@
 using SBThub.Domain.Shared;
-using SBThub.Domain.ValueObjects;
 using SBThub.Domain.ValueObjects.User;
 
 namespace SBThub.Domain.Errors;

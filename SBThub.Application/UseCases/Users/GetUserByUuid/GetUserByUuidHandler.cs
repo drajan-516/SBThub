@@ -2,6 +2,7 @@
 using SBThub.Application.Contracts.Responses;
 using SBThub.Application.Mapping;
 using SBThub.Domain.Entities;
+using SBThub.Domain.Errors;
 using SBThub.Domain.Repositories;
 using SBThub.Domain.Shared;
 
@@ -12,10 +13,11 @@ internal sealed class GetUserByUuidHandler(IRepository repository)
 {
     public async Task<ResultResponse<UserResponse>> Handle(GetUserByUuidQuery query, CancellationToken cancellationToken)
     {
-        var user = await repository.GetByUuidAsync<User>(query.Uuid, cancellationToken);
-        if (user is null)
-            return ResultResponse.Failure<UserResponse>(Error.NotFound("User.NotFound", "Пользователь не найден"));
+        var user = await repository.GetSingleAsync<User>(u => u.Uuid == query.Uuid, cancellationToken);
 
-        return ResultResponse.Success(user.ToResponse());
+        return user is null
+            ? ResultResponse.Failure<UserResponse>(UserErrors.NotFound)
+            : ResultResponse.Success(user.ToResponse());
     }
 }
+
