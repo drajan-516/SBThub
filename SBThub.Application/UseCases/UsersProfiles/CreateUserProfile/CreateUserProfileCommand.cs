@@ -2,6 +2,6 @@
 using SBThub.Application.Contracts.Responses;
 using SBThub.Application.Contracts.Requests.UserProfile;
 
-namespace SBThub.Application.UseCases.UserProfiles.CreateUserProfile;
+namespace SBThub.Application.UseCases.UsersProfiles.CreateUserProfile;
 
 public sealed record CreateUserProfileCommand(Guid UserId, CreateUserProfileRequest Request) : ICommand<UserProfileResponse>;

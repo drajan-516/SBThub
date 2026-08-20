@@ -15,10 +15,11 @@ internal sealed class UserProfileConfiguration : IEntityTypeConfiguration<UserPr
         builder
             .HasOne<User>()
             .WithOne()
-            .HasForeignKey<UserProfile>(p => p.UserId);
-        
+            .HasForeignKey<UserProfile>(p => p.UserId)
+            .HasPrincipalKey<User>(u => u.Uuid);
+    
         builder.HasKey(user => user.Id);
-        builder.HasIndex(user => user.Uuid).IsUnique();
+        builder.HasIndex(user => user.Uuid).IsUnique();;
 
         builder.Property(user => user.FullName)
             .HasConversion(name => name.Value, value => UserName.Create(value).Value)
