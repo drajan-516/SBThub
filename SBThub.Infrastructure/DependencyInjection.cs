@@ -3,6 +3,8 @@ using SBThub.Infrastructure.Persistence;
 using SBThub.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using SBThub.Application.Abstractions;
+using SBThub.Infrastructure.Security;
 
 namespace SBThub.Infrastructure;
 
@@ -17,6 +19,8 @@ public static class DependencyInjection
         
         services.AddScoped<IRepository, BaseRepository>();
 
+        services.AddScoped<IPasswordHasher, PasswordHasher>();
+        
         return services;
     }
 }

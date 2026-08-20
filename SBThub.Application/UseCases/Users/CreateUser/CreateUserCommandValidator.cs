@@ -15,5 +15,14 @@ internal sealed class CreateUserCommandValidator : AbstractValidator<CreateUserC
         RuleFor(command => command.Request.Phone)
             .NotEmpty().WithMessage("Номер телефона обязательно.")
             .Matches(@"^\+?\d{9,15}$").WithMessage("Некорректный формат номера телефона.");
+
+        RuleFor(command => command.Request.Email)
+            .NotEmpty().WithMessage("Электронная почта обязательна.")
+            .EmailAddress().WithMessage("Некорректный формат электронной почты.")
+            .MaximumLength(320).WithMessage("Электронная почта не должна превышать 320 символов.");
+        
+        RuleFor(command => command.Request.Password)
+            .NotEmpty().WithMessage("Пароль обязателен.")
+            .MinimumLength(8).WithMessage("Пароль должен содержать минимум 8 символов.");
     }
 }

@@ -6,7 +6,7 @@ using SBThub.Domain.Errors;
 using SBThub.Domain.Repositories;
 using SBThub.Domain.Shared;
 
-namespace SBThub.Application.UseCases.UserProfiles.GetUserProfileByUuid;
+namespace SBThub.Application.UseCases.UsersProfiles.GetUserProfileByUuid;
 
 internal sealed class GetUserProfileByUuidHandler(IRepository repository)
     : IQueryHandler<GetUserProfileByUserIdQuery, UserProfileResponse>

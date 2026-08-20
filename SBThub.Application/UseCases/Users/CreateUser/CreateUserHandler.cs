@@ -1,3 +1,4 @@
+using SBThub.Application.Abstractions;
 using SBThub.Application.Abstractions.Messaging;
 using SBThub.Application.Contracts.Responses;
 using SBThub.Application.Mapping;
@@ -7,12 +8,14 @@ using SBThub.Domain.Shared;
 
 namespace SBThub.Application.UseCases.Users.CreateUser;
 
-internal sealed class CreateUserHandler(IRepository users, IUnitOfWork unitOfWork)
+internal sealed class CreateUserHandler(IRepository users, IUnitOfWork unitOfWork, IPasswordHasher passwordHasher)
     : ICommandHandler<CreateUserCommand, UserResponse>
 {
     public async Task<ResultResponse<UserResponse>> Handle(CreateUserCommand command, CancellationToken cancellationToken)
     {
-        var userResult = User.Create(command.Request.FullName, command.Request.Phone);
+        var passwordHash = passwordHasher.Hash(command.Request.Password!);
+
+        var userResult = User.Create(command.Request.FullName, command.Request.Phone, command.Request.Email, passwordHash);
         if (userResult.IsFailure)
             return ResultResponse.Failure<UserResponse>(userResult.Error);
 
