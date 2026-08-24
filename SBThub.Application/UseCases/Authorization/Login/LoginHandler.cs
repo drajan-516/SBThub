@@ -1,6 +1,6 @@
 ﻿using SBThub.Application.Abstractions;
 using SBThub.Application.Abstractions.Messaging;
-using SBThub.Application.Contracts.Responses;
+using SBThub.Application.Contracts.Contracts.Responses;
 using SBThub.Application.Mapping;
 using SBThub.Domain.Entities;
 using SBThub.Domain.Errors;
@@ -9,18 +9,20 @@ using SBThub.Domain.Shared;
 
 namespace SBThub.Application.UseCases.Authorization.Login;
 
-internal sealed class LoginHandler(IRepository repository, IPasswordHasher passwordHasher)
-    : ICommandHandler<LoginCommand, UserResponse>
+internal sealed class LoginHandler(IRepository repository, IPasswordHasher passwordHasher, IJwtTokenService jwtTokenService)
+    : ICommandHandler<LoginCommand, LoginResult>
 {
-    public async Task<ResultResponse<UserResponse>> Handle(LoginCommand command, CancellationToken cancellationToken)
+    public async Task<ResultResponse<LoginResult>> Handle(LoginCommand command, CancellationToken cancellationToken)
     {
         var user = await repository.GetSingleAsync<User>(u => u.Email == command.Request.Email, cancellationToken);
         if (user is null)
-            return ResultResponse.Failure<UserResponse>(UserErrors.InvalidCredentials);
+            return ResultResponse.Failure<LoginResult>(UserErrors.InvalidCredentials);
 
         if (!passwordHasher.Verify(command.Request.Password, user.PasswordHash))
-            return ResultResponse.Failure<UserResponse>(UserErrors.InvalidCredentials);
-
-        return ResultResponse.Success(user.ToResponse());
+            return ResultResponse.Failure<LoginResult>(UserErrors.InvalidCredentials);
+        var token = jwtTokenService.GenerateAccessToken(user);
+        
+        return ResultResponse.Success(
+            new LoginResult(user.ToResponse(), token));
     }
 }

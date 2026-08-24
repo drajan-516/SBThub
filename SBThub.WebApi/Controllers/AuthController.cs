@@ -1,11 +1,10 @@
-﻿using System.Security.Claims;
-using SBThub.Domain.Shared;
-using MediatR;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SBThub.Application.Contracts.Contracts.Requests.Authorization;
 using SBThub.Application.UseCases.Authorization.Login;
+// Для проверки авторизации
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SBThub.WebApi.Controllers;
 
@@ -20,30 +19,38 @@ public sealed class AuthController(ISender sender) : BaseApiController(sender)
         if (result.IsFailure)
             return HandleFailure(result);
 
-        var user = result.Value; // допустим тут UserResponse с Uuid, FullName и т.д.
+        var tokenResponse = result.Value.AccessToken; // допустим тут UserResponse с Uuid, FullName и т.д.
 
-        var claims = new List<Claim>
-        {
-            new(ClaimTypes.NameIdentifier, user.Uuid.ToString()),
-            new(ClaimTypes.Name, user.FullName)
-        };
+        Response.Cookies.Append(
+            "access_token",
+            tokenResponse.AccessToken,
+            new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict,
+                MaxAge = TimeSpan.FromSeconds(tokenResponse.ExpiresIn)
+            });
 
-        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        var principal = new ClaimsPrincipal(identity);
-
-        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties
-        {
-            IsPersistent = true, // куку не удалять при закрытии браузера
-            ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
-        });
-
-        return Ok(new { user.Uuid, user.FullName });
+        return Ok(result.Value.User);
     }
 
     [HttpPost("logout")]
     public async Task<IActionResult> Logout()
     {
-        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        Response.Cookies.Delete("access_token");
         return Ok();
+    }
+    
+    // Просто проверка авторизации
+    [Authorize]
+    [HttpGet("me")]
+    public IActionResult Me()
+    {
+        return Ok(new
+        {
+            UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+            Name = User.Identity?.Name
+        });
     }
 }
