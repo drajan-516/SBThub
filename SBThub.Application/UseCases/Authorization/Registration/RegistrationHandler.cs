@@ -2,6 +2,7 @@
 using SBThub.Application.Contracts.Contracts.Requests.Registration;
 using SBThub.Application.Contracts.Contracts.Responses;
 using SBThub.Domain.Entities;
+using SBThub.Domain.Errors;
 using SBThub.Domain.Repositories;
 using SBThub.Domain.Shared;
 
@@ -12,6 +13,12 @@ internal sealed class RegistrationHandler(IRepository users, IUnitOfWork unitOfW
 {
     public async Task<ResultResponse<TokenResponse>> Handle(RegistrationRequest request, CancellationToken cancellationToken)
     {
+        if (request.Email is not null &&
+            await users.AnyAsync<User>(u => u.Email == request.Email, cancellationToken))
+        {
+            return ResultResponse.Failure<TokenResponse>(UserErrors.EmailAlreadyInUse);
+        }
+        
         var passwordHash = request.Password is not null
             ? passwordHasher.Hash(request.Password)
             : null;

@@ -25,4 +25,8 @@ public static class UserErrors
     public static readonly Error PasswordRequired = Error.Validation(
         "User.PasswordRequired",
         "Пароль обязателен.");
+
+    public static readonly Error EmailAlreadyInUse = Error.Validation(
+        "User.EmailAlreadyInUse",
+        "Почта уже занята.");
 }

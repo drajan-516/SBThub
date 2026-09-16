@@ -17,4 +17,8 @@
       <ProjectReference Include="..\SBThub.Domain\SBThub.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <InternalsVisibleTo Include="SBThub.Application.Tests" />
+    </ItemGroup>
+
 </Project>
