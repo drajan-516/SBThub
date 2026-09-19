@@ -11,8 +11,8 @@ using SBThub.Infrastructure.Persistence;
 namespace SBThub.Infrastructure.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    [Migration("20260802124747_RenameCreatedByUserIdToCreatedByUserUuid")]
-    partial class RenameCreatedByUserIdToCreatedByUserUuid
+    [Migration("20260918225632_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,9 +65,17 @@ namespace SBThub.Infrastructure.Migrations
                     b.Property<DateTimeOffset>("CreatedOn")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
@@ -83,6 +91,71 @@ namespace SBThub.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Users", (string)null);
+                });
+
+            modelBuilder.Entity("SBThub.Domain.Entities.UserProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("AvatarUrl")
+                        .HasMaxLength(2048)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTimeOffset>("CreatedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(320)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsAvatarVisible")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsEmailVisible")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsFullNameVisible")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsPhoneVisible")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(30)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("Uuid")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.HasIndex("Uuid")
+                        .IsUnique();
+
+                    b.ToTable("UserProfile", (string)null);
+                });
+
+            modelBuilder.Entity("SBThub.Domain.Entities.UserProfile", b =>
+                {
+                    b.HasOne("SBThub.Domain.Entities.User", null)
+                        .WithOne()
+                        .HasForeignKey("SBThub.Domain.Entities.UserProfile", "UserId")
+                        .HasPrincipalKey("SBThub.Domain.Entities.User", "Uuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

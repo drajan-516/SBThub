@@ -7,6 +7,7 @@ public sealed class ShopDbContext(DbContextOptions<ShopDbContext> options) : DbC
 {
     public DbSet<User> Users => Set<User>();
     public DbSet<Product> Products { get; set; }
+    public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

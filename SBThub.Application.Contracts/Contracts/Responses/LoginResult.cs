@@ -2,4 +2,4 @@
 
 namespace SBThub.Application.Contracts.Contracts.Responses;
 
-public sealed record LoginResult(UserResponse User, TokenResponse AccessToken);
+public sealed record LoginResult(UserResponse User, TokenResponse AccessToken, RefreshTokenResponse RefreshToken);

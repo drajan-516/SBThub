@@ -6,4 +6,6 @@ namespace SBThub.Application.Abstractions;
 public interface IJwtTokenService
 {
     TokenResponse GenerateAccessToken(User user);
+    RefreshTokenResponse GenerateRefreshToken();
+    string HashToken(string token);
 }

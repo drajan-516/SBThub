@@ -17,6 +17,10 @@ public static class UserErrors
     public static readonly Error InvalidCredentials = Error.Validation(
         "User.InvalidCredentials", 
         "Неверный email или пароль.");
+    // Стоило ли писать такую ошибку...
+    public static readonly Error InvalidRefreshToken = Error.Validation(
+        "User.InvalidRefreshToken", 
+        "Недействительный refresh-токен.");
     
     public static readonly Error EmailRequired = Error.Validation(
         "User.EmailRequired", 
